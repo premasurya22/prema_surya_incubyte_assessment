@@ -5,13 +5,26 @@ public class StringCalculator {
 
 	public int add(String numbers) throws NegativeNumberException{
 		
+		//1. check empty String
 		if(numbers.isEmpty()) {
 			return 0;
 		}
 		
-		String delimiter = ",|\n";  // Default delimiters: comma and newline
+		//3. Allow the add method to handle new lines between numbers (instead of commas).
+		String delimiter = ",|\n"; 
         String numbersPart = numbers;
+        
+        
+        //4. Support different delimiters: 
+        // To change the delimiter, the beginning of the string will contain a separate line that looks like this: "//[delimiter]\n[numbers…]". 
+        if (numbers.startsWith("//")) {
+            int delimiterIndex = numbers.indexOf("\n");
+            delimiter = numbers.substring(2, delimiterIndex); 
+            numbersPart = numbers.substring(delimiterIndex + 1);
+        }
 		
+        
+        //2. Allow to handle any number of inputs
 		String[] numberArray = numbersPart.split(delimiter);
 		int sum = 0;
 		List<Integer> negativeNumbers = new ArrayList<>();

@@ -32,6 +32,12 @@ public class StringCalculatorTest {
 	 @Test
 	    public void testNewLineDelimiter() throws Exception {
 	        StringCalculator calculator = new StringCalculator();
-	        assertEquals(6, calculator.add("1\n2,3"));
+	        assertEquals(9, calculator.add("1\n2,3,3"));
+	    }
+	 
+	 @Test
+	    public void testCustomDelimiter() throws Exception {
+	        StringCalculator calculator = new StringCalculator();
+	        assertEquals(3, calculator.add("//;\n1;2"));
 	    }
 }
