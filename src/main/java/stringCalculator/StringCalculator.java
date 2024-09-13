@@ -9,7 +9,10 @@ public class StringCalculator {
 			return 0;
 		}
 		
-		String[] numberArray = numbers.split(",");
+		String delimiter = ",|\n";  // Default delimiters: comma and newline
+        String numbersPart = numbers;
+		
+		String[] numberArray = numbersPart.split(delimiter);
 		int sum = 0;
 		List<Integer> negativeNumbers = new ArrayList<>();
 
