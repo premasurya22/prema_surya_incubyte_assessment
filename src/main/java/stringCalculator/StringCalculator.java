@@ -41,7 +41,7 @@ public class StringCalculator {
             }
         }
 
-        // Throw exception if there are negative numbers
+        //5. Throw exception if there are negative numbers
         if (!negativeNumbers.isEmpty()) {
             throw new NegativeNumberException("Negative numbers not allowed: " + negativeNumbers.toString());
         }

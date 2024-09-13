@@ -2,6 +2,7 @@ package stringCalculatorTest;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import stringCalculator.StringCalculator;
+import stringCalculator.NegativeNumberException;
 
 public class StringCalculatorTest {
 
@@ -39,5 +40,15 @@ public class StringCalculatorTest {
 	    public void testCustomDelimiter() throws Exception {
 	        StringCalculator calculator = new StringCalculator();
 	        assertEquals(3, calculator.add("//;\n1;2"));
+	    }
+	 
+	 @Test
+	    public void testNegativeNumbers() {
+	        StringCalculator calculator = new StringCalculator();
+	        Exception exception = assertThrows(NegativeNumberException.class, () -> {
+	            calculator.add("1,-2,3,-4");
+	        });
+
+	        assertEquals("Negative numbers not allowed: [-2, -4]", exception.getMessage());
 	    }
 }
