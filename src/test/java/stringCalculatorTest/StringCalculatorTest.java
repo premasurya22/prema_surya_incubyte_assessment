@@ -42,7 +42,6 @@ public class StringCalculatorTest {
 	        Exception exception = assertThrows(NegativeNumberException.class, () -> {
 	            calculator.add("1,-2,3,-4");
 	        });
-
 	        assertEquals("Negative numbers not allowed: [-2, -4]", exception.getMessage());
 	    }
 }
